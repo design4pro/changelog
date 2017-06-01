@@ -1,6 +1,6 @@
 {
-  "name": "changelog",
-  "version": "0.0.2",
+  "name": "release-me",
+  "version": "0.0.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "bin": "dist/cli.js",
   "scripts": {

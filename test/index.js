@@ -12,7 +12,7 @@ import mockery from 'mockery';
 import semver from 'semver';
 import Promise from 'bluebird';
 import cli from '../src/command';
-import changelog from '../src/index';
+import releaseMe from '../src/index';
 
 var should = require('chai').should();
 
@@ -39,7 +39,7 @@ function execCli (argString) {
 }
 
 function execCliAsync (argString) {
-  return Promise.promisify(changelog)(cli.parse('changelog ' + argString + ' --silent'));
+  return Promise.promisify(releaseMe)(cli.parse('releaseMe ' + argString + ' --silent'));
 }
 
 function writePackageJson (version, option) {
@@ -439,7 +439,7 @@ describe('cli', () => {
   });
 });
 
-describe('changelog', () => {
+describe('releaseMe', () => {
   beforeEach(initInTempFolder);
   afterEach(finishTemp);
 

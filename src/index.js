@@ -10,7 +10,7 @@ import semver from 'semver';
 import util from 'util';
 import objectAssign from 'object-assign';
 
-function changelog(argv, done) {
+function releaseMe(argv, done) {
     const pkgPath = path.resolve(process.cwd(), './package.json');
     const pkg = require(pkgPath);
     const defaults = require('./defaults');
@@ -278,4 +278,4 @@ function printError(argv, msg, opts) {
     }
 }
 
-export default changelog;
+export default releaseMe;

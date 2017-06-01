@@ -53,7 +53,7 @@ function commands() {
         })
         .option('commit-all', {
             alias: 'a',
-            describe: 'Commit all staged changes, not just files affected by standard-version',
+            describe: 'Commit all staged changes, not just files affected by release-me',
             type: 'boolean',
             default: defaults.commitAll,
             global: true
