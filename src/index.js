@@ -1,5 +1,6 @@
 import conventionalRecommendedBump from 'conventional-recommended-bump';
 import conventionalChangelog from 'conventional-changelog';
+import config from 'conventional-changelog-release-me';
 import path from 'path';
 
 import chalk from 'chalk';
@@ -9,6 +10,7 @@ import * as fs from 'fs';
 import semver from 'semver';
 import util from 'util';
 import objectAssign from 'object-assign';
+
 
 function releaseMe(argv, done) {
     const pkgPath = path.resolve(process.cwd(), './package.json');
@@ -54,7 +56,7 @@ function releaseMe(argv, done) {
  * @param newVersion version # to update to.
  * @return {string}
  */
-var configsToUpdate = {};
+let configsToUpdate = {};
 
 function updateConfigs(args, newVersion) {
     configsToUpdate[path.resolve(process.cwd(), './package.json')] = false;
@@ -63,11 +65,11 @@ function updateConfigs(args, newVersion) {
         try {
             var stat = fs.lstatSync(configPath);
             if (stat.isFile()) {
-                const config = require(configPath);
+                const configData = require(configPath);
                 const filename = path.basename(configPath);
-                checkpoint(args, 'bumping version in ' + filename + ' from %s to %s', [config.version, newVersion]);
-                config.version = newVersion;
-                fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n', 'utf-8');
+                checkpoint(args, 'bumping version in ' + filename + ' from %s to %s', [configData.version, newVersion]);
+                configData.version = newVersion;
+                fs.writeFileSync(configPath, JSON.stringify(configData, null, 2) + '\n', 'utf-8');
                 // flag any config files that we modify the version # for
                 // as having been updated.
                 configsToUpdate[configPath] = true;
@@ -115,7 +117,7 @@ function isInPrerelease(version) {
     return Array.isArray(semver.prerelease(version));
 }
 
-var TypeList = ['major', 'minor', 'patch'].reverse();
+let TypeList = ['major', 'minor', 'patch'].reverse();
 
 /**
  * extract the in-pre-release type in target version
@@ -167,10 +169,10 @@ function outputChangelog(argv, cb) {
     }
     let content = '';
     let changelogStream = conventionalChangelog({
-            preset: 'angular'
-        }, undefined, {
-            merges: null
-        })
+        config
+    }, undefined, {
+        merges: null
+    })
         .on('error', (err) => {
             return cb(err);
         });
@@ -262,8 +264,8 @@ function createIfMissing(argv) {
 function checkpoint(argv, msg, args, figure) {
     if (!argv.silent) {
         console.info((figure || chalk.green(figures.tick)) + ' ' + util.format.apply(util, [msg].concat(args.map(function(arg) {
-            return chalk.bold(arg);
-        }))));
+                return chalk.bold(arg);
+            }))));
     }
 }
 
