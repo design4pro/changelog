@@ -1,6 +1,6 @@
 import conventionalRecommendedBump from 'conventional-recommended-bump';
 import conventionalChangelog from 'conventional-changelog';
-import config from 'conventional-changelog-release-me';
+import config from '../../conventional-changelog-release-me/dist/index';
 import path from 'path';
 
 import chalk from 'chalk';
@@ -209,7 +209,8 @@ function handledExec(argv, cmd, errorCb, successCb) {
 function commit(argv, newVersion, cb) {
     let msg = 'committing %s';
     const args = [argv.infile];
-    const verify = argv.verify === false || argv.n ? '--no-verify ' : '';
+    const verify = argv.noVerify === false || argv.n ? '--no-verify ' : '';
+    console.log('verify', verify);
     let toAdd = '';
     // commit any of the config files that we've updated
     // the version # for.
