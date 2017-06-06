@@ -27,3 +27,4 @@ script:
 after_success:
   - npm run report-coverage
   - npm run release
+  - npm run release:github
