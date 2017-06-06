@@ -1,6 +1,6 @@
 import conventionalRecommendedBump from 'conventional-recommended-bump';
 import conventionalChangelog from 'conventional-changelog';
-import config from '../../conventional-changelog-release-me/dist/index';
+import config from 'conventional-changelog-release-me';
 import path from 'path';
 
 import chalk from 'chalk';
@@ -30,14 +30,11 @@ function releaseMe(argv) {
         })
         .then((release) => {
             if (!args.firstRelease) {
-                let releaseType = getReleaseType(args.prerelease, release.releaseType,
-                    pkg.version);
-                newVersion = semver.valid(releaseType) || semver.inc(pkg.version,
-                    releaseType, args.prerelease);
+                let releaseType = getReleaseType(args.prerelease, release.releaseType, pkg.version);
+                newVersion = semver.valid(releaseType) || semver.inc(pkg.version, releaseType, args.prerelease);
                 updateConfigs(args, newVersion);
             } else {
-                checkpoint(args, 'skip version bump on first release', [],
-                    chalk.red(figures.cross));
+                checkpoint(args, 'skip version bump on first release', [], chalk.red(figures.cross));
             }
 
             return runScript(args, 'postbump', newVersion, scripts);
