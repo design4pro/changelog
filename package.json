@@ -1,6 +1,6 @@
 {
   "name": "release-me",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "bin": "dist/cli.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/design4pro/changelog.git"
+    "url": "git+https://github.com/design4pro/release-me.git"
   },
   "engines": {
     "node": ">=4.0"
@@ -29,7 +29,8 @@
   "keywords": [
     "changelog",
     "automatic",
-    "version"
+    "version",
+    "release"
   ],
   "author": {
     "name": "Rafał Wolak",
@@ -38,9 +39,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/design4pro/changelog/issues"
+    "url": "https://github.com/design4pro/release-me/issues"
   },
-  "homepage": "https://github.com/design4pro/changelog#readme",
+  "homepage": "https://github.com/design4pro/release-me#readme",
   "dependencies": {
     "chalk": "^1.1.3",
     "conventional-changelog": "^1.1.0",
