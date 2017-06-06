@@ -19,6 +19,7 @@ before_install:
 before_script:
   - git config --global user.name 'Travis-CI'
   - git config --global user.email 'travis-ci@design4.pro'
+  - npm i
 script:
   - npm run build
   - npm run cover
