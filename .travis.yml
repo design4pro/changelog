@@ -20,6 +20,7 @@ before_script:
   - git config --global user.email 'travis-ci@design4.pro'
   - npm prune
 script:
+  - npm run build
   - npm run cover
   - npm run check-coverage
 after_success:
