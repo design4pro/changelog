@@ -2,14 +2,11 @@
 
 'use strict';
 
-import objectAssign from 'object-assign';
 import shell from 'shelljs';
 import fs from 'fs';
 import path from 'path';
-import stream from 'stream';
 import mockGit from 'mock-git';
 import gitDummyCommit from 'git-dummy-commit';
-import mockery from 'mockery';
 import debug from 'debug';
 import semver from 'semver';
 import cli from '../dist/command';
