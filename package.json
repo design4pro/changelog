@@ -1,6 +1,6 @@
 {
   "name": "release-me",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "bin": "dist/cli.js",
   "scripts": {
@@ -11,8 +11,6 @@
     "lint": "jshint *.js --exclude node_modules && jscs *.js",
     "prebuild": "rimraf dist",
     "release": "./dist/cli.js",
-    "release-github-remove": "github-remove-all-releases design4pro release-me",
-    "release-github": "conventional-github-releaser -p angular -r 0",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "start": "npm run test",
     "test": "mocha --timeout 15000 test/index.js --compilers js:babel-register",
