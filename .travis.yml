@@ -19,7 +19,7 @@ before_install:
 before_script:
   - git config --global user.name 'Travis-CI'
   - git config --global user.email 'travis-ci@design4.pro'
-  - npm i
+  - npm prune
 script:
   - npm run build
   - chmod +x ./dist/cli.js
@@ -28,4 +28,6 @@ script:
 after_success:
   - npm run report-coverage
   - npm run release -- --no-verify
+  - git push --follow-tags
+  - npm publish
   - npm run release:github

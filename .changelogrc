@@ -27,8 +27,7 @@
     {
       "key": "docs",
       "name": "Documentation",
-      "description": "Documentation only changes",
-      "hide": true
+      "description": "Documentation only changes"
     },
     {
       "key": "style",
@@ -51,8 +50,7 @@
     {
       "key": "chore",
       "name": "Chores",
-      "description": "Changes to the build process or auxiliary tools\nand libraries such as documentation generation",
-      "hide": true
+      "description": "Changes to the build process or auxiliary tools\nand libraries such as documentation generation"
     }
   ],
   "notes": [
