@@ -1,6 +1,12 @@
 # Change Log
 
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/design4pro/release-me/tree/v1.1.1) (2017-06-07)
+
+[Full Changelog](https://github.com/design4pro/release-me/compare/v1.1.0...v1.1.1)
+
+
 <a name="1.1.0"></a>
 # 1.1.0 (2017-06-07)
 
