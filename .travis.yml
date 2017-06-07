@@ -22,6 +22,7 @@ before_script:
   - npm i
 script:
   - npm run build
+  - chmod +x ./dist/cli.js
   - npm run cover
   - npm run check-coverage
 after_success:
