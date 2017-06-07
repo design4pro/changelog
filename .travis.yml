@@ -33,7 +33,7 @@ script:
 after_success:
   - npm run report-coverage
   - npm run release -- --no-verify
-  - git push --follow-tags
+  - git push --follow-tags origin master
   - npm publish
   - npm run release-github-remove
   - npm run release-github

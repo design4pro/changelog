@@ -5,7 +5,7 @@
   "bin": "dist/cli.js",
   "scripts": {
     "build": "babel --copy-files --out-dir dist src",
-    "check-coverage": "nyc check-coverage --statements 93 --branches 80 --functions 95 --lines 95",
+    "check-coverage": "nyc check-coverage --statements 93 --branches 75 --functions 95 --lines 95",
     "commit": "git-cz",
     "cover": "nyc --reporter=lcov npm t",
     "lint": "jshint *.js --exclude node_modules && jscs *.js",
@@ -68,6 +68,7 @@
     "cz-conventional-changelog": "^2.0.0",
     "debug": "^2.6.8",
     "git-dummy-commit": "^1.3.0",
+    "github-remove-all-releases": "^1.0.1",
     "husky": "^0.13.4",
     "istanbul": "^0.4.5",
     "jscs": "^3.0.7",
