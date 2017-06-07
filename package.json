@@ -1,6 +1,6 @@
 {
   "name": "release-me",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "bin": "dist/cli.js",
   "scripts": {
@@ -38,7 +38,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/design4pro/release-me/issues"
+    "url": "https://github.com/design4pro/release-me/issues/"
   },
   "homepage": "https://github.com/design4pro/release-me#readme",
   "dependencies": {
