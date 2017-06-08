@@ -43,11 +43,11 @@
     "conventional-changelog": "^1.1.0",
     "conventional-changelog-release-me": "^1.0.1",
     "conventional-recommended-bump": "^1.0.0",
-    "figures": "^1.5.0",
+    "figures": "^2.0.0",
     "fs-access": "^1.0.0",
     "q": "^1.5.0",
     "semver": "^5.1.0",
-    "yargs": "^7.0.1"
+    "yargs": "^8.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -66,8 +66,8 @@
     "jscs": "^3.0.7",
     "jshint": "^2.9.4",
     "mocha": "^3.4.2",
-    "mock-git": "^1.0.2",
-    "nyc": "^10.3.2",
+    "mock-git": "^2.0.0",
+    "nyc": "^11.0.2",
     "rimraf": "^2.6.1",
     "shelljs": "^0.7.3",
     "standard": "^10.0.0"
