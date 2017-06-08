@@ -66,7 +66,7 @@
     "jscs": "^3.0.7",
     "jshint": "^2.9.4",
     "mocha": "^3.4.2",
-    "mock-git": "^2.0.0",
+    "mock-git": "^1.0.2",
     "nyc": "^11.0.2",
     "rimraf": "^2.6.1",
     "shelljs": "^0.7.3",
@@ -81,6 +81,11 @@
     "presets": [
       "es2015",
       "stage-2"
+    ]
+  },
+  "greenkeeper": {
+    "ignore": [
+      "mock-git"
     ]
   }
 }
