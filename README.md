@@ -1,5 +1,7 @@
 # Release Me
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/design4pro/release-me.svg)](https://greenkeeper.io/)
+
 [![travis build](https://img.shields.io/travis/design4pro/release-me.svg?style=flat-square)](https://travis-ci.org/design4pro/release-me) [![codecov coverage](https://img.shields.io/codecov/c/gh/design4pro/release-me.svg?style=flat-square)](https://codecov.io/gh/design4pro/release-me) [![Github All Releases](https://img.shields.io/github/downloads/design4pro/release-me/total.svg?style=flat-square)](https://github.com/design4pro/release-me) [![npm](https://img.shields.io/npm/v/release-me.svg?style=flat-square)](https://www.npmjs.com/package/release-me) [![npm](https://img.shields.io/npm/dt/release-me.svg?style=flat-square)](https://www.npmjs.com/package/release-me)
 
 > stop using npm version, use release-me
