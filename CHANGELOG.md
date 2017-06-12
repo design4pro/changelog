@@ -1,5 +1,14 @@
 # Change Log
 
+<a name="1.1.2"></a>
+## 1.1.2 (2017-06-12)
+
+* ci(package): dependencies ([b352b3f](https://github.com/design4pro/release-me/commit/b352b3f))
+* ci(travis-ci): Changes with npm ([b33a5af](https://github.com/design4pro/release-me/commit/b33a5af))
+* ci(travis-ci): Update Travis CI script ([7786e68](https://github.com/design4pro/release-me/commit/7786e68))
+* fix(package): Update dependencies ([cd54310](https://github.com/design4pro/release-me/commit/cd54310))
+
+
 
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/design4pro/release-me/tree/v1.1.1) (2017-06-07)

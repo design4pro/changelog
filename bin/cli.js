@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import releaseMe from './index';
-import cmdParser from './command';
+const releaseMe = require('../index');
+const cmdParser = require('../command');
 
 /* istanbul ignore if */
 if (process.version.match(/v(\d+)\./)[1] < 4) {

@@ -1,5 +1,5 @@
 {
-  "max-line-length": {
+  "maxLineLength": {
     "head": 100,
     "body": 100
   },
@@ -53,10 +53,29 @@
       "description": "Changes to the build process or auxiliary tools\nand libraries such as documentation generation"
     }
   ],
+  "scopes": [
+    {
+      "name": "package"
+    },
+    {
+      "name": "docs"
+    },
+    {
+      "name": "test"
+    },
+    {
+      "name": "ci"
+    },
+    {
+      "name": "travis"
+    }
+  ],
   "notes": [
     {
       "keyword": "BREAKING CHANGE",
       "important": true
     }
-  ]
+  ],
+  "allowCustomScopes": true,
+  "allowBreakingChanges": ["feat", "fix"]
 }
