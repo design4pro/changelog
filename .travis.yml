@@ -18,8 +18,7 @@ before_install:
 before_script:
   - npm prune
 script:
-  - npm run build
-  - npm run cover
-  - npm run check-coverage
+  - npm run test:debug
+  - npm run test:check-coverage
 after_success:
   - npm run report-coverage
