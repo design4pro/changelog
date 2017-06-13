@@ -82,7 +82,7 @@ module.exports = require('yargs')
   .option('dry-run', {
     type: 'boolean',
     default: defaults.dryRun,
-    describe: 'See the commands that running standard-version would run'
+    describe: 'See the commands that running release-me would run'
   })
   .check(function (argv) {
     /* istanbul ignore next */
