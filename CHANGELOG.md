@@ -1,5 +1,14 @@
 # Change Log
 
+<a name="1.3.1"></a>
+## 1.3.1 (2017-06-13)
+
+* docs(package): badges ([6e9502e](https://github.com/design4pro/release-me/commit/6e9502e))
+* chore(package): block-scoped declarations fix ([954ffb1](https://github.com/design4pro/release-me/commit/954ffb1))
+* chore(package): block-scoped declarations fix ([a508333](https://github.com/design4pro/release-me/commit/a508333))
+
+
+
 <a name="1.3.0"></a>
 # 1.3.0 (2017-06-13)
 
