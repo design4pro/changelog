@@ -1,5 +1,20 @@
 # Change Log
 
+<a name="1.2.0"></a>
+# 1.2.0 (2017-06-13)
+
+* fix(package): improvments, travis-ci fix ([ad05201](https://github.com/design4pro/release-me/commit/ad05201))
+* fix(package): Update dependencies ([cd54310](https://github.com/design4pro/release-me/commit/cd54310))
+* test(travis): travis-ci changes ([916c85d](https://github.com/design4pro/release-me/commit/916c85d))
+* test(travis): travis-ci changes ([6d13bc4](https://github.com/design4pro/release-me/commit/6d13bc4))
+* test(travis): Travis-ci changes ([86f5aa4](https://github.com/design4pro/release-me/commit/86f5aa4))
+* feat(package): Code refactor ([4aa02b4](https://github.com/design4pro/release-me/commit/4aa02b4))
+* ci(package): dependencies ([b352b3f](https://github.com/design4pro/release-me/commit/b352b3f))
+* ci(travis-ci): Changes with npm ([b33a5af](https://github.com/design4pro/release-me/commit/b33a5af))
+* ci(travis-ci): Update Travis CI script ([7786e68](https://github.com/design4pro/release-me/commit/7786e68))
+
+
+
 <a name="1.1.2"></a>
 ## 1.1.2 (2017-06-12)
 

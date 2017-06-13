@@ -1,10 +1,10 @@
 {
   "name": "release-me",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "bin": "bin/cli.js",
   "scripts": {
-    "release": "release-me",
+    "release": "chmod +x ./bin/cli.js && ./bin/cli.js",
     "report-coverage": "nyc report --reporter=text-lcov | codecov",
     "test": "nyc --reporter=html --reporter=text mocha --timeout 20000 --reporter spec $(find . -name '*test.js' ! -ipath '*node_modules*')",
     "test:check-coverage": "nyc check-coverage --statements 90 --branches 70 --functions 97 --lines 90",
