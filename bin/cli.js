@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-const releaseMe = require('../index');
-const cmdParser = require('../command');
 
-/* istanbul ignore if */
+var releaseMe = require('../index');
+var cmdParser = require('../command');
+
 if (process.version.match(/v(\d+)\./)[1] < 4) {
   console.error('release-me: Node v4 or greater is required. `release-me` did not run.');
 } else {
   releaseMe(cmdParser.argv)
-    .catch(() => {
+    .catch(function () {
       process.exit(1);
     });
 }

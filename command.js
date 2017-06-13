@@ -1,6 +1,6 @@
 'use strict';
 
-const defaults = require('./defaults');
+var defaults = require('./defaults');
 
 module.exports = require('yargs')
   .usage('Usage: $0 [options]')
@@ -84,7 +84,7 @@ module.exports = require('yargs')
     default: defaults.dryRun,
     describe: 'See the commands that running standard-version would run'
   })
-  .check((argv) => {
+  .check(function (argv) {
     /* istanbul ignore next */
     if (typeof argv.scripts !== 'object' || Array.isArray(argv.scripts)) {
       throw Error('scripts must be an object');

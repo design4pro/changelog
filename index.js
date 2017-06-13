@@ -1,18 +1,16 @@
 'use strict';
 
-const path = require('path');
-const printError = require('./lib/print-error');
-
-const bump = require('./lib/lifecycles/bump');
-const changelog = require('./lib/lifecycles/changelog');
-const commit = require('./lib/lifecycles/commit');
-const tag = require('./lib/lifecycles/tag');
-
-let log = require('winston');
+var path = require('path');
+var printError = require('./lib/print-error');
+var bump = require('./lib/lifecycles/bump');
+var changelog = require('./lib/lifecycles/changelog');
+var commit = require('./lib/lifecycles/commit');
+var tag = require('./lib/lifecycles/tag');
+var log = require('winston');
 
 module.exports = function releaseMe(argv) {
-  const defaults = require('./defaults');
-  let pkg = {};
+  var defaults = require('./defaults');
+  var pkg = {};
   try {
     pkg = require(path.resolve(
       process.cwd(),
@@ -21,14 +19,14 @@ module.exports = function releaseMe(argv) {
   } catch (err) {
     log.warn('no root package.json found');
   }
-  let newVersion = pkg.version;
-  let args = Object.assign({}, defaults, argv);
+  var newVersion = pkg.version;
+  var args = Object.assign({}, defaults, argv);
 
   return Promise.resolve()
-    .then(() => {
+    .then(function () {
       return bump(args, pkg);
     })
-    .then((_newVersion) => {
+    .then(function (_newVersion) {
       // if bump runs, it calculaes the new version that we
       // should release at.
       if (_newVersion) {
@@ -37,14 +35,15 @@ module.exports = function releaseMe(argv) {
 
       return changelog(args, newVersion);
     })
-    .then(() => {
+    .then(function () {
       return commit(args, newVersion);
     })
-    .then(() => {
+    .then(function () {
       return tag(newVersion, pkg.private, args);
     })
-    .catch((err) => {
+    .catch(function (err) {
       printError(args, err.message);
+
       throw err;
     });
 };

@@ -1,20 +1,20 @@
 'use strict';
 
-const shell = require('shelljs');
-const fs = require('fs');
-const path = require('path');
-const mockGit = require('mock-git');
-const debug = require('debug');
-const log = debug('mocha');
-const semver = require('semver');
-const cli = require('./command');
-const releaseMe = require('./index');
-const chai = require('chai');
-const expect = chai.expect;
+var shell = require('shelljs');
+var fs = require('fs');
+var path = require('path');
+var mockGit = require('mock-git');
+var debug = require('debug');
+var log = debug('mocha');
+var semver = require('semver');
+var cli = require('./command');
+var releaseMe = require('./index');
+var chai = require('chai');
+var expect = chai.expect;
 
 chai.should();
 
-let cliPath = path.resolve(__dirname, './bin/cli.js');
+var cliPath = path.resolve(__dirname, './bin/cli.js');
 
 function branch(branch) {
   shell.exec('git branch ' + branch);
@@ -42,7 +42,7 @@ function execCliAsync(argString) {
 
 function writePackageJson(version, option) {
   option = option || {};
-  let pkg = Object.assign(option, {
+  var pkg = Object.assign(option, {
     version: version
   });
   fs.writeFileSync('package.json', JSON.stringify(pkg), 'utf-8');
@@ -51,7 +51,7 @@ function writePackageJson(version, option) {
 
 function writeBowerJson(version, option) {
   option = option || {};
-  let bower = Object.assign(option, {
+  var bower = Object.assign(option, {
     version: version
   });
   fs.writeFileSync('bower.json', JSON.stringify(bower), 'utf-8');
@@ -68,7 +68,7 @@ function writePostBumpHook(causeError) {
 
 function writeHook(hookName, causeError, script) {
   shell.mkdir('-p', 'scripts');
-  let content = script || 'console.error("' + hookName + ' ran")';
+  var content = script || 'console.error("' + hookName + ' ran")';
   content += causeError ? '\nthrow new Error("' + hookName + '-failure")' : '';
   fs.writeFileSync('scripts/' + hookName + '.js', content, 'utf-8');
   fs.chmodSync('scripts/' + hookName + '.js', '755');
@@ -94,24 +94,24 @@ function getPackageVersion() {
   return JSON.parse(fs.readFileSync('package.json', 'utf-8')).version;
 }
 
-describe('cli', () => {
+describe('cli', function () {
   beforeEach(initInTempFolder);
   afterEach(finishTemp);
 
-  describe('CHANGELOG.md does not exist', () => {
-    it('populates changelog with commits since last tag by default', () => {
+  describe('CHANGELOG.md does not exist', function () {
+    it('populates changelog with commits since last tag by default', function () {
       commit('feat: first commit');
       shell.exec('git tag -a v1.0.0 -m "my awesome first release"');
       commit('fix: patch release');
 
       execCli().code.should.equal(0);
 
-      let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
+      var content = fs.readFileSync('CHANGELOG.md', 'utf-8');
       content.should.match(/patch release/);
       content.should.not.match(/first commit/);
     });
 
-    it('includes all commits if --first-release is true', () => {
+    it('includes all commits if --first-release is true', function () {
       writePackageJson('1.0.1');
 
       commit('feat: first commit');
@@ -119,7 +119,7 @@ describe('cli', () => {
 
       execCli('--first-release').code.should.equal(0);
 
-      let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
+      var content = fs.readFileSync('CHANGELOG.md', 'utf-8');
       content.should.match(/patch release/);
       content.should.match(/first commit/);
 
@@ -127,8 +127,8 @@ describe('cli', () => {
     });
   });
 
-  describe('CHANGELOG.md exists', () => {
-    it('appends the new release above the last release, removing the old header', () => {
+  describe('CHANGELOG.md exists', function () {
+    it('appends the new release above the last release, removing the old header', function () {
       fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
       commit('feat: first commit');
@@ -137,12 +137,12 @@ describe('cli', () => {
 
       execCli().code.should.equal(0);
 
-      let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
+      var content = fs.readFileSync('CHANGELOG.md', 'utf-8');
       content.should.match(/1\.0\.1/);
       content.should.not.match(/legacy header format/);
     });
 
-    it('commits all staged files', () => {
+    it('commits all staged files', function () {
       fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
       commit('feat: first commit');
@@ -155,8 +155,8 @@ describe('cli', () => {
 
       execCli('--commit-all').code.should.equal(0);
 
-      let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
-      let status = shell.exec('git status --porcelain'); // see http://unix.stackexchange.com/questions/155046/determine-if-git-working-directory-is-clean-from-a-script
+      var content = fs.readFileSync('CHANGELOG.md', 'utf-8');
+      var status = shell.exec('git status --porcelain'); // see http://unix.stackexchange.com/questions/155046/determine-if-git-working-directory-is-clean-from-a-script
 
       status.should.equal('');
       status.should.not.match(/STUFF.md/);
@@ -166,14 +166,14 @@ describe('cli', () => {
     });
   });
 
-  describe('with mocked git', () => {
-    it('--sign signs the commit and tag', () => {
+  describe('with mocked git', function () {
+    it('--sign signs the commit and tag', function () {
       // mock git with file that writes args to gitcapture.log
       return mockGit('require("fs").appendFileSync("gitcapture.log", JSON.stringify(process.argv.splice(2)) + "\\n")')
-        .then((unmock) => {
+        .then(function (unmock) {
           execCli('--sign').code.should.equal(0);
 
-          let captured = shell.cat('gitcapture.log').stdout.split('\n').map((line) => {
+          var captured = shell.cat('gitcapture.log').stdout.split('\n').map(function (line) {
             return line ? JSON.parse(line) : line;
           });
 
@@ -184,11 +184,11 @@ describe('cli', () => {
         });
     });
 
-    it('exits with error code if git commit fails', () => {
+    it('exits with error code if git commit fails', function () {
       // mock git by throwing on attempt to commit
       return mockGit('console.error("commit yourself"); process.exit(128);', 'commit')
-        .then((unmock) => {
-          let result = execCli();
+        .then(function (unmock) {
+          var result = execCli();
 
           result.code.should.equal(1);
           result.stderr.should.match(/commit yourself/);
@@ -197,11 +197,11 @@ describe('cli', () => {
         });
     });
 
-    it('exits with error code if git add fails', () => {
+    it('exits with error code if git add fails', function () {
       // mock git by throwing on attempt to add
       return mockGit('console.error("addition is hard"); process.exit(128);', 'add')
-        .then((unmock) => {
-          let result = execCli();
+        .then(function (unmock) {
+          var result = execCli();
 
           result.code.should.equal(1);
           result.stderr.should.match(/addition is hard/);
@@ -210,11 +210,11 @@ describe('cli', () => {
         });
     });
 
-    it('exits with error code if git tag fails', () => {
+    it('exits with error code if git tag fails', function () {
       // mock git by throwing on attempt to commit
       return mockGit('console.error("tag, you\'re it"); process.exit(128);', 'tag')
-        .then((unmock) => {
-          let result = execCli();
+        .then(function (unmock) {
+          var result = execCli();
 
           result.code.should.equal(1);
           result.stderr.should.match(/tag, you're it/);
@@ -223,13 +223,13 @@ describe('cli', () => {
         });
     });
 
-    it('doesn\'t fail fast on stderr output from git', () => {
+    it('doesn\'t fail fast on stderr output from git', function () {
       // mock git by throwing on attempt to commit
       return mockGit('console.error("haha, kidding, this is just a warning"); process.exit(0);', 'add')
-        .then((unmock) => {
+        .then(function (unmock) {
           writePackageJson('1.0.0');
 
-          let result = execCli();
+          var result = execCli();
 
           result.code.should.equal(0);
           result.stderr.should.match(/haha, kidding, this is just a warning/);
@@ -239,23 +239,23 @@ describe('cli', () => {
     });
   });
 
-  describe('pre-release', () => {
-    it('works fine without specifying a tag id when prereleasing', () => {
+  describe('pre-release', function () {
+    it('works fine without specifying a tag id when prereleasing', function () {
       writePackageJson('1.0.0');
       fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
       commit('feat: first commit');
 
       return execCliAsync('--prerelease')
-        .then(() => {
+        .then(function () {
           // it's a feature commit, so it's minor type
           expect(getPackageVersion()).to.equal('1.1.0-0');
         });
     });
   });
 
-  describe('manual-release', () => {
-    it('throws error when not specifying a release type', () => {
+  describe('manual-release', function () {
+    it('throws error when not specifying a release type', function () {
       writePackageJson('1.0.0');
       fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
@@ -263,20 +263,20 @@ describe('cli', () => {
       execCli('--release-as').code.should.above(0);
     });
 
-    describe('release-types', () => {
-      const regularTypes = ['major', 'minor', 'patch'];
+    describe('release-types', function () {
+      var regularTypes = ['major', 'minor', 'patch'];
 
-      regularTypes.forEach((type) => {
-        it('creates a ' + type + ' release', () => {
-          const ORIGIN_VER = '1.0.0';
+      regularTypes.forEach(function (type) {
+        it('creates a ' + type + ' release', function () {
+          var ORIGIN_VER = '1.0.0';
           writePackageJson(ORIGIN_VER);
           fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
           commit('fix: first commit');
 
           return execCliAsync('--release-as ' + type)
-            .then(() => {
-              let version = {
+            .then(function () {
+              var version = {
                 major: semver.major(ORIGIN_VER),
                 minor: semver.minor(ORIGIN_VER),
                 patch: semver.patch(ORIGIN_VER)
@@ -290,17 +290,17 @@ describe('cli', () => {
       });
 
       // this is for pre-releases
-      regularTypes.forEach((type) => {
-        it('creates a pre' + type + ' release', () => {
-          const ORIGIN_VER = '1.0.0';
+      regularTypes.forEach(function (type) {
+        it('creates a pre' + type + ' release', function () {
+          var ORIGIN_VER = '1.0.0';
           writePackageJson(ORIGIN_VER);
           fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
           commit('fix: first commit');
 
           return execCliAsync('--release-as ' + type + ' --prerelease ' + type)
-            .then(() => {
-              let version = {
+            .then(function () {
+              var version = {
                 major: semver.major(ORIGIN_VER),
                 minor: semver.minor(ORIGIN_VER),
                 patch: semver.patch(ORIGIN_VER)
@@ -314,96 +314,96 @@ describe('cli', () => {
       });
     });
 
-    describe('release-as-exact', () => {
-      it('releases as v100.0.0', () => {
-        const ORIGIN_VER = '1.0.0';
+    describe('release-as-exact', function () {
+      it('releases as v100.0.0', function () {
+        var ORIGIN_VER = '1.0.0';
         writePackageJson(ORIGIN_VER);
         fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
         commit('fix: first commit');
 
         return execCliAsync('--release-as v100.0.0')
-          .then(() => {
+          .then(function () {
             getPackageVersion().should.equal('100.0.0');
           });
       });
 
-      it('releases as 200.0.0-amazing', () => {
-        const ORIGIN_VER = '1.0.0';
+      it('releases as 200.0.0-amazing', function () {
+        var ORIGIN_VER = '1.0.0';
         writePackageJson(ORIGIN_VER);
         fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
         commit('fix: first commit');
 
         return execCliAsync('--release-as 200.0.0-amazing')
-          .then(() => {
+          .then(function () {
             getPackageVersion().should.equal('200.0.0-amazing');
           });
       });
     });
 
-    it('creates a prerelease with a new minor version after two prerelease patches', () => {
+    it('creates a prerelease with a new minor version after two prerelease patches', function () {
       writePackageJson('1.0.0');
       fs.writeFileSync('CHANGELOG.md', 'legacy header format<a name="1.0.0">\n', 'utf-8');
 
       commit('fix: first patch');
       return execCliAsync('--release-as patch --prerelease dev')
-        .then(() => {
+        .then(function () {
           getPackageVersion().should.equal('1.0.1-dev.0');
         })
 
         // second
-        .then(() => {
+        .then(function () {
           commit('fix: second patch');
 
           return execCliAsync('--prerelease dev');
         })
-        .then(() => {
+        .then(function () {
           getPackageVersion().should.equal('1.0.1-dev.1');
         })
 
         // third
-        .then(() => {
+        .then(function () {
           commit('feat: first new feat');
 
           return execCliAsync('--release-as minor --prerelease dev');
         })
-        .then(() => {
+        .then(function () {
           getPackageVersion().should.equal('1.1.0-dev.0');
         })
 
-        .then(() => {
+        .then(function () {
           commit('fix: third patch');
 
           return execCliAsync('--release-as minor --prerelease dev');
         })
-        .then(() => {
+        .then(function () {
           getPackageVersion().should.equal('1.1.0-dev.1');
         })
 
-        .then(() => {
+        .then(function () {
           commit('fix: forth patch');
 
           return execCliAsync('--prerelease dev');
         })
-        .then(() => {
+        .then(function () {
           getPackageVersion().should.equal('1.1.0-dev.2');
         });
     });
   });
 
-  it('handles commit messages longer than 80 characters', () => {
+  it('handles commit messages longer than 80 characters', function () {
     commit('feat: first commit');
     shell.exec('git tag -a v1.0.0 -m "my awesome first release"');
     commit('fix: this is my fairly long commit message which is testing whether or not we allow for long commit messages');
 
     execCli().code.should.equal(0);
 
-    let content = fs.readFileSync('./CHANGELOG.md', 'utf-8');
+    var content = fs.readFileSync('./CHANGELOG.md', 'utf-8');
     content.should.match(/this is my fairly long commit message which is testing whether or not we allow for long commit/);
   });
 
-  it('formats the commit and tag messages appropriately', () => {
+  it('formats the commit and tag messages appropriately', function () {
     commit('feat: first commit');
     shell.exec('git tag -a v1.0.0 -m "my awesome first release"');
     commit('feat: new feature!');
@@ -416,14 +416,14 @@ describe('cli', () => {
     shell.exec('git tag -l -n1 v1.1.0').stdout.should.match(/chore\(release\): 1\.1\.0/);
   });
 
-  it('appends line feed at end of package.json', () => {
+  it('appends line feed at end of package.json', function () {
     execCli().code.should.equal(0);
 
-    let pkgJson = fs.readFileSync('package.json', 'utf-8');
+    var pkgJson = fs.readFileSync('package.json', 'utf-8');
     pkgJson.should.equal(['{', '  "version": "1.0.1"', '}', ''].join('\n'));
   });
 
-  it('does not run git hooks if the --no-verify flag is passed', () => {
+  it('does not run git hooks if the --no-verify flag is passed', function () {
     writeGitPreCommitHook();
 
     commit('feat: first commit');
@@ -433,27 +433,27 @@ describe('cli', () => {
     execCli('-n').code.should.equal(0);
   });
 
-  it('does not print output when the --silent flag is passed', () => {
-    let result = execCli('--silent');
+  it('does not print output when the --silent flag is passed', function () {
+    var result = execCli('--silent');
 
     result.code.should.equal(0);
     result.stdout.should.equal('');
     result.stderr.should.equal('');
   });
 
-  it('does not display `npm publish` if the package is private', () => {
+  it('does not display `npm publish` if the package is private', function () {
     writePackageJson('1.0.0', {
       private: true
     });
 
-    let result = execCli();
+    var result = execCli();
 
     result.code.should.equal(0);
     result.stdout.should.not.match(/npm publish/);
   });
 
-  it('includes merge commits', () => {
-    const BRANCH_NAME = 'new-feature';
+  it('includes merge commits', function () {
+    var BRANCH_NAME = 'new-feature';
     commit('feat: first commit');
     shell.exec('git tag -a v1.0.0 -m "my awesome first release"');
     branch(BRANCH_NAME);
@@ -464,19 +464,19 @@ describe('cli', () => {
 
     execCli().code.should.equal(0);
 
-    let content = fs.readFileSync('CHANGELOG.md', 'utf-8');
+    var content = fs.readFileSync('CHANGELOG.md', 'utf-8');
     content.should.match(/new feature from branch/);
 
-    let pkgJson = fs.readFileSync('package.json', 'utf-8');
+    var pkgJson = fs.readFileSync('package.json', 'utf-8');
     pkgJson.should.equal(['{', '  "version": "1.1.0"', '}', ''].join('\n'));
   });
 });
 
-describe('releaseMe', () => {
+describe('releaseMe', function () {
   beforeEach(initInTempFolder);
   afterEach(finishTemp);
 
-  it('formats the commit and tag messages appropriately', (done) => {
+  it('formats the commit and tag messages appropriately', function (done) {
     commit('feat: first commit');
     shell.exec('git tag -a v1.0.0 -m "my awesome first release"');
     commit('feat: new feature!');
@@ -484,7 +484,7 @@ describe('releaseMe', () => {
     releaseMe({
       silent: true
     })
-      .then(() => {
+      .then(function () {
         // check last commit message
         shell.exec('git log --oneline -n1').stdout.should.match(/chore\(release\): 1\.1\.0/);
         // check annotated tag message
@@ -493,12 +493,12 @@ describe('releaseMe', () => {
       });
   });
 
-  describe('bower.json support', () => {
-    beforeEach(() => {
+  describe('bower.json support', function () {
+    beforeEach(function () {
       writeBowerJson('1.0.0');
     });
 
-    it('bumps verson # in bower.json', (done) => {
+    it('bumps verson # in bower.json', function (done) {
       commit('feat: first commit');
       shell.exec('git tag -a v1.0.0 -m "my awesome first release"');
       commit('feat: new feature!');
@@ -506,7 +506,7 @@ describe('releaseMe', () => {
       releaseMe({
         silent: true
       })
-        .then(() => {
+        .then(function () {
           JSON.parse(fs.readFileSync('bower.json', 'utf-8')).version.should.equal('1.1.0');
           getPackageVersion().should.equal('1.1.0');
 
