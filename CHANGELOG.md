@@ -1,5 +1,12 @@
 # Change Log
 
+<a name="1.3.0"></a>
+# 1.3.0 (2017-06-13)
+
+* feat(package): node 4 and 5 compatibility ([ee16ba8](https://github.com/design4pro/release-me/commit/ee16ba8))
+
+
+
 <a name="1.2.0"></a>
 # 1.2.0 (2017-06-13)
 
