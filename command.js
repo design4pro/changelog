@@ -37,6 +37,12 @@ module.exports = require('yargs')
     default: defaults.firstRelease,
     global: true
   })
+  .option('release-count', {
+    describe: 'How many releases to be generated from the latest. If 0, the whole changelog will be regenerated and the outfile will be overwritten',
+    type: 'int',
+    default: defaults.releaseCount,
+    global: true
+  })
   .option('sign', {
     alias: 's',
     describe: 'Should the git commit and tag be signed?',

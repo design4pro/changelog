@@ -45,12 +45,13 @@
       "key": "test",
       "name": "Tests",
       "description": "Adding missing tests",
-      "hide": true
+      "hide": false
     },
     {
       "key": "chore",
       "name": "Chores",
-      "description": "Changes to the build process or auxiliary tools\nand libraries such as documentation generation"
+      "description": "Changes to the build process or auxiliary tools\nand libraries such as documentation generation",
+      "hide": false
     }
   ],
   "scopes": [
