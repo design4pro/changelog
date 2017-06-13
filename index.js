@@ -19,7 +19,6 @@ module.exports = function releaseMe(argv) {
       './package.json'
     ));
   } catch (err) {
-    /* istanbul ignore next */
     log.warn('no root package.json found');
   }
   let newVersion = pkg.version;
@@ -32,7 +31,6 @@ module.exports = function releaseMe(argv) {
     .then((_newVersion) => {
       // if bump runs, it calculaes the new version that we
       // should release at.
-      /* istanbul ignore if */
       if (_newVersion) {
         newVersion = _newVersion;
       }

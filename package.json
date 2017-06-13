@@ -7,7 +7,7 @@
     "release": "release-me",
     "report-coverage": "nyc report --reporter=text-lcov | codecov",
     "test": "nyc --reporter=html --reporter=text mocha --timeout 20000 --reporter spec $(find . -name '*test.js' ! -ipath '*node_modules*')",
-    "test:check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "test:check-coverage": "nyc check-coverage --statements 90 --branches 70 --functions 97 --lines 90",
     "test:debug": "DEBUG=mocha npm t",
     "test:watch": "npm t -- --watch"
   },
@@ -56,11 +56,16 @@
     "jscs": "^3.0.7",
     "jshint": "^2.9.4",
     "mocha": "^3.4.2",
-    "mock-git": "^2.0.0",
+    "mock-git": "1.0.3",
     "nyc": "^11.0.2",
     "rimraf": "^2.6.1",
     "shelljs": "^0.7.3",
     "standard": "^10.0.0",
     "winston": "^2.3.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-release-me"
+    }
   }
 }

@@ -231,7 +231,7 @@ describe('cli', () => {
 
           let result = execCli();
 
-          result.code.should.equal(1);
+          result.code.should.equal(0);
           result.stderr.should.match(/haha, kidding, this is just a warning/);
 
           unmock();
