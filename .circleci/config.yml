@@ -3,7 +3,6 @@ jobs:
   build:
     working_directory: ~/release-me
     docker:
-      - image: circleci/node:4
       - image: circleci/node:6
       - image: circleci/node:7
       - image: circleci/node:latest
@@ -17,9 +16,6 @@ jobs:
           command: |
             git config --global user.name 'Travis-CI'
             git config --global user.email 'travis-ci@design4.pro'
-      - run:
-          name: 'Prune npm'
-          command: npm prune
       - run:
           name: 'Install npm'
           command: npm install
