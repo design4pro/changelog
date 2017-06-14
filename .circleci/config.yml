@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/release-me
+    docker:
+      - image: circleci/node:4
+      - image: circleci/node:6
+      - image: circleci/node:7
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+        name: update-npm
+        command: 'sudo npm install -g npm@latest'
+      - run:
+        name: add-git-user
+        command: |
+          git config --global user.name 'Travis-CI'
+          git config --global user.email 'travis-ci@design4.pro'
+      - run:
+        name: prune-npm
+        command: npm prune
+      - run:
+        name: install-npm
+        command: npm install
+      - run:
+        name: test
+        command: npm run test:debug
+      - run:
+        name: check-coverage
+        command: npm run test:check-coverage
+      - run:
+        name: report-coverage
+        command: npm run report-coverage
+
