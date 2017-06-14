@@ -67,5 +67,10 @@
     "commitizen": {
       "path": "./node_modules/cz-release-me"
     }
+  },
+  "greenkeeper": {
+    "ignore": [
+      "mock-git"
+    ]
   }
 }
