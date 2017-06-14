@@ -10,24 +10,26 @@ jobs:
     steps:
       - checkout
       - run:
-        name: update-npm
-        command: sudo npm install -g npm@latest
+          name: update-npm
+          command: sudo npm install -g npm@latest
       - run:
-        name: add-git-user
-        command: git config --global user.name 'Travis-CI' && git config --global user.email 'travis-ci@design4.pro'
+          name: add-git-user
+          command: |
+            git config --global user.name 'Travis-CI'
+            git config --global user.email 'travis-ci@design4.pro'
       - run:
-        name: prune-npm
-        command: npm prune
+          name: prune-npm
+          command: npm prune
       - run:
-        name: install-npm
-        command: npm install
+          name: install-npm
+          command: npm install
       - run:
-        name: test
-        command: npm run test:debug
+          name: test
+          command: npm run test:debug
       - run:
-        name: check-coverage
-        command: npm run test:check-coverage
+          name: check-coverage
+          command: npm run test:check-coverage
       - run:
-        name: report-coverage
-        command: npm run report-coverage
+          name: report-coverage
+          command: npm run report-coverage
 
