@@ -14,9 +14,7 @@ jobs:
         command: 'sudo npm install -g npm@latest'
       - run:
         name: add-git-user
-        command: |
-          git config --global user.name 'Travis-CI'
-          git config --global user.email 'travis-ci@design4.pro'
+        command: git config --global user.name 'Travis-CI' && git config --global user.email 'travis-ci@design4.pro'
       - run:
         name: prune-npm
         command: npm prune
