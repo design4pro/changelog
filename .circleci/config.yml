@@ -15,7 +15,10 @@ jobs:
             git config --global user.email 'travis-ci@design4.pro'
       - run:
           name: 'Update npm'
-          command: 'sudo npm install -g npm@5'
+          command: 'sudo npm install -g npm@latest'
+      - run:
+          name: 'Update semver'
+          command: 'sudo npm install -g semver'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
