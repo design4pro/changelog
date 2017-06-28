@@ -1,6 +1,6 @@
 # Release Me
 
-[![travis build](https://img.shields.io/travis/design4pro/release-me.svg)](https://travis-ci.org/design4pro/release-me) [![CircleCI](https://img.shields.io/circleci/project/github/design4pro/release-me.svg)](https://github.com/design4pro/release-me) [![codecov coverage](https://img.shields.io/codecov/c/gh/design4pro/release-me.svg)](https://codecov.io/gh/design4pro/release-me) [![npm](https://img.shields.io/npm/v/release-me.svg)](https://www.npmjs.com/package/release-me) [![npm](https://img.shields.io/npm/dt/release-me.svg)](https://www.npmjs.com/package/release-me) [![Greenkeeper badge](https://badges.greenkeeper.io/design4pro/release-me.svg)](https://greenkeeper.io/)
+[![travis build](https://img.shields.io/travis/design4pro/release-me.svg)](https://travis-ci.org/design4pro/release-me) [![CircleCI](https://circleci.com/gh/design4pro/release-me.svg?&style=shield&circle-token=dcae2e86230ae035ea4ae977ae55f58f20a00ac9)](https://circleci.com/gh/design4pro/release-me) [![codecov coverage](https://img.shields.io/codecov/c/gh/design4pro/release-me.svg)](https://codecov.io/gh/design4pro/release-me) [![npm](https://img.shields.io/npm/v/release-me.svg)](https://www.npmjs.com/package/release-me) [![npm](https://img.shields.io/npm/dt/release-me.svg)](https://www.npmjs.com/package/release-me) [![Greenkeeper badge](https://badges.greenkeeper.io/design4pro/release-me.svg)](https://greenkeeper.io/)
 
 > stop using npm version, use release-me
 
