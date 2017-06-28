@@ -14,8 +14,8 @@ jobs:
             git config --global user.name 'Travis-CI'
             git config --global user.email 'travis-ci@design4.pro'
       - run:
-          name: 'Install semver'
-          command: 'sudo npm install -g semver'
+          name: 'Install required semver, process-nextick-args'
+          command: 'sudo npm install -g semver process-nextick-args'
       - run:
           name: 'Update npm'
           command: 'sudo npm install -g npm@latest'
