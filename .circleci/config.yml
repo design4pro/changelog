@@ -13,12 +13,6 @@ jobs:
           command: |
             git config --global user.name 'Travis-CI'
             git config --global user.email 'travis-ci@design4.pro'
-      - run:
-          name: 'Install required semver, process-nextick-args, isarray, core-util-is, inherits'
-          command: 'sudo npm install -g semver process-nextick-args isarray core-util-is inherits'
-      - run:
-          name: 'Update npm'
-          command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
