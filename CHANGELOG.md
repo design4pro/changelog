@@ -1,9 +1,27 @@
 # Change Log
 
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/design4pro/release-me/tree/v1.4.1) (2017-07-05)
+
+[Full Changelog](https://github.com/design4pro/release-me/compare/v1.4.0...v1.4.1)
+
+
+### Chores
+
+* **package:** npm ignore ([43778b4](https://github.com/design4pro/release-me/commit/43778b4))<br>
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/design4pro/release-me/tree/v1.4.0) (2017-07-05)
 
 [Full Changelog](https://github.com/design4pro/release-me/compare/v1.3.1...v1.4.0)
+
+
+### Chores
+
+* **package:** dependencies update ([fd655cb](https://github.com/design4pro/release-me/commit/fd655cb))<br>
+* **package:** dependencies update ([dd6519a](https://github.com/design4pro/release-me/commit/dd6519a))<br>
+* **release:** 1.4.0 ([9502e7f](https://github.com/design4pro/release-me/commit/9502e7f))<br>
 
 
 ### Bug Fixes
@@ -38,12 +56,6 @@
 * **ci:** update ([379ef92](https://github.com/design4pro/release-me/commit/379ef92))<br>
 * **ci:** update ([5cfd5c7](https://github.com/design4pro/release-me/commit/5cfd5c7))<br>
 * **travis:** codecov fix ([7f07541](https://github.com/design4pro/release-me/commit/7f07541))<br>
-
-
-### Chores
-
-* **package:** dependencies update ([fd655cb](https://github.com/design4pro/release-me/commit/fd655cb))<br>
-* **package:** dependencies update ([dd6519a](https://github.com/design4pro/release-me/commit/dd6519a))<br>
 
 
 ### Features
