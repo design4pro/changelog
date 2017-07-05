@@ -3,6 +3,16 @@
   "version": "1.4.0",
   "description": "Replacement for `npm version` with automatic CHANGELOG generation",
   "bin": "bin/cli.js",
+  "main": "bin/cli.js",
+  "files": [
+    "bin",
+    "lib",
+    "command.js",
+    "defaults.json",
+    "index.js",
+    "LICENSE.md",
+    "README.md"
+  ],
   "scripts": {
     "release": "chmod +x ./bin/cli.js && ./bin/cli.js --release-count=0",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
