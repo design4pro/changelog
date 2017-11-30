@@ -1,5 +1,25 @@
 # Change Log
 
+<a name="1.4.2"></a>
+## [1.4.2](https://github.com/design4pro/release-me/tree/v1.4.2) (2017-11-30)
+
+[Full Changelog](https://github.com/design4pro/release-me/compare/v1.4.1...v1.4.2)
+
+
+### Chores
+
+* **package:** update ([42ffb65](https://github.com/design4pro/release-me/commit/42ffb65))<br>
+* **package:** update codecov to version 3.0.0 ([e245205](https://github.com/design4pro/release-me/commit/e245205))<br>
+* **package:** update debug to version 3.0.0 ([3eee01d](https://github.com/design4pro/release-me/commit/3eee01d))<br>
+* **package:** update mocha to version 4.0.0 ([1ad00c2](https://github.com/design4pro/release-me/commit/1ad00c2))<br>
+
+
+### Bug Fixes
+
+* **package:** update yargs to version 10.0.3 ([bd0da89](https://github.com/design4pro/release-me/commit/bd0da89))<br>
+* **package:** update yargs to version 9.0.1 ([5c4f245](https://github.com/design4pro/release-me/commit/5c4f245))<br>
+
+
 <a name="1.4.1"></a>
 ## [1.4.1](https://github.com/design4pro/release-me/tree/v1.4.1) (2017-07-05)
 
@@ -9,6 +29,7 @@
 ### Chores
 
 * **package:** npm ignore ([43778b4](https://github.com/design4pro/release-me/commit/43778b4))<br>
+* **release:** 1.4.1 ([70365f2](https://github.com/design4pro/release-me/commit/70365f2))<br>
 
 
 <a name="1.4.0"></a>
