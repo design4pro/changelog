@@ -17,8 +17,6 @@ branches:
     - /^greenkeeper/.*$/
 notifications:
   email: false
-before_install:
-  - 'npm install -g npm@latest'
 before_script:
   - git config --global user.name 'Travis-CI'
   - git config --global user.email 'travis-ci@design4.pro'
