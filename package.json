@@ -70,7 +70,7 @@
     "nyc": "^11.0.2",
     "rimraf": "^2.6.1",
     "shelljs": "^0.7.3",
-    "standard": "^10.0.0",
+    "standard": "^11.0.1",
     "winston": "^2.3.1"
   },
   "config": {
