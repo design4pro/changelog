@@ -46,7 +46,7 @@
   "homepage": "https://github.com/design4pro/release-me#readme",
   "dependencies": {
     "chalk": "^2.0.0",
-    "conventional-changelog-core": "^1.8.0",
+    "conventional-changelog-core": "^3.0.0",
     "conventional-changelog-release-me": "^1.2.0",
     "conventional-recommended-bump": "^1.0.0",
     "figures": "^2.0.0",
